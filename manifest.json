@@ -1,0 +1,28 @@
+{
+  "name": "Block Redirect",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Block the redirect from malicious websites",
+  "browser_action": {
+    "default_popup": "index.html"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs",
+    "<all_urls>",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "run_at": "document_start",
+      "js": ["script.js"]
+    }
+  ]
+}
